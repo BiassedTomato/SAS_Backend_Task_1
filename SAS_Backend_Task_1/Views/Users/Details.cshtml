@@ -1,0 +1,65 @@
+﻿@{
+    ViewData["Title"] = "Details";
+}
+
+@model SAS_Backend_Task_1.Models.UserModel
+
+<h1>@Model.FirstName @(Model.LastName.Last()=='s'? Model.LastName+Html.Raw("'"): Model.LastName+Html.Raw("'s")) Details</h1>
+
+<table>
+    <tr>
+        <td>
+            <p>@Model.FirstName @Model.LastName @(Model.Patronymic!=null?Model.Patronymic:"")</p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p>E-mail: @Model.Email</p>
+        </td>
+    </tr>
+    <tr>
+
+        <td>
+            <p>Country: @Model.Country</p>
+        </td>
+    </tr>
+    <tr>
+
+        <td>
+            <p>Born @Model.BirthDate</p>
+        </td>
+    </tr>
+    <tr>
+
+        <td>
+            <p>@Model.Gender</p>
+        </td>
+    </tr>
+    <tr>
+
+        <td>
+            <p>Height: @Model.Height</p>
+        </td>
+    </tr>
+    <tr>
+
+        <td>
+            <p>Weight: @Model.Weight</p>
+        </td>
+    </tr>
+    <tr>
+
+        <td>
+            <p>BMI: @Model.BMI</p>
+        </td>
+    </tr>
+    <tr>
+
+        <td>
+            <p>@(Model.IsStudent?"Student":"Not a student")</p>
+        </td>
+    </tr>
+
+
+</table>
+

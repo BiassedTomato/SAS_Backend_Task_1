@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewData["Title"] = "Users";
+}
+
+<h1>Details</h1>
+
+<div>
+    <table>
+
+        @foreach (var user in UserStore.Users.Values)
+        {
+            <tr>
+                <td>
+                    <p>
+                        <a href="/Users/Details?id=@user.ID" class="Button">@user.FirstName @user.LastName (@user.Email)</a>
+                        <a href="/Users/Edit?id=@user.ID" style="color:#ffd757">Edit</a>
+                        <a href="/Users/Delete?id=@user.ID" style="color:#e72d2d">Delete</a>
+                    </p>
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+

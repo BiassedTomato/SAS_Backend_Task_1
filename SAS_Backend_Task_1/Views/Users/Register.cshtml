@@ -1,0 +1,149 @@
+﻿@{
+
+}
+
+@model SAS_Backend_Task_1.Models.UserModel
+
+<div>
+    <h1>Register</h1>
+
+    <form method="post">
+        <table border="0" cellpadding="2" cellspacing="2">
+            <tr>
+                <td>
+
+                    <label>First Name: </label>
+                </td>
+                <td>
+
+                    <input asp-for="FirstName" />
+                </td>
+                <td>
+                    <span asp-validation-for="FirstName" class="text-danger"></span>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+
+                    <label>Last Name: </label>
+                </td>
+                <td>
+
+                    <input asp-for="LastName" />
+                </td>
+                <td>
+                    <span asp-validation-for="LastName" class="text-danger"></span>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <label>Patronymic (if present): </label>
+                </td>
+                <td>
+                    <input asp-for="Patronymic" />
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+
+                    <label>Birth date: </label>
+                </td>
+                <td>
+
+                    <input asp-for="BirthDate" />
+                </td>
+                <td>
+                    <span asp-validation-for="BirthDate" class="text-danger"></span>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <label asp-for="Gender">Gender: </label>
+                </td>
+                <td>
+                    <select asp-for="Gender" list asp-items="@Html.GetEnumSelectList<Gender>()"></select>
+                </td>
+                <td>
+                    <span asp-validation-for="Gender" class="text-danger"></span>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+
+                    <label asp-for="Height">Height: </label>
+                </td>
+                <td>
+
+                    <input asp-for="Height" />
+                </td>
+                <td>
+                    <span asp-validation-for="Height" class="text-danger"></span>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+
+                    <label asp-for="Weight">Weight: </label>
+                </td>
+                <td>
+
+                    <input asp-for="Weight" />
+                </td>
+                <td>
+                    <span asp-validation-for="Weight" class="text-danger"></span>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+
+                    <label asp-for="Email">E-mail: </label>
+                </td>
+                <td>
+
+                    <input asp-for="Email" />
+                </td>
+                <td>
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+
+                    <label asp-for="Country">Country: </label>
+                </td>
+                <td>
+
+                    <input asp-for="Country" />
+                </td>
+                <td>
+                    <span asp-validation-for="Country" class="text-danger"></span>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+
+                    <label asp-for="IsStudent">I am a student </label>
+                </td>
+                <td>
+                    <input asp-for="IsStudent" type="checkbox" />
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <input type="submit" value="Submit" />
+                </td>
+
+            </tr>
+        </table>
+    </form>
+</div>

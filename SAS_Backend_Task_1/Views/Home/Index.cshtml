@@ -1,0 +1,19 @@
+﻿@using Microsoft.Extensions.Configuration
+@inject IConfiguration _configuration
+@{
+    ViewData["Title"] = "[B]ome Page";
+}
+
+@model SAS_Backend_Task_1.Models.InterfaceViewmodel
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <p>Transient A call counter (ViewBag) = @ViewBag.A </p>
+    <p>Scoped B1 call counter (ViewBag) = @ViewBag.B1</p>
+    <p>Singleton B2 call counter (ViewModel) = @Model.B2</p>
+    <p>_____________</p>
+    <p>Transient A (ViewData) = @ViewData["A"]</p>
+    <p>*****Settings*****</p>
+    <p>Settings A = @ViewBag.SetA; Settings B = @ViewBag.SetB;</p>
+</div>
