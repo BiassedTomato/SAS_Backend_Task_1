@@ -11,10 +11,12 @@ namespace SAS_Backend_Task_1.Models
     {
         public ulong ID;
 
-        [Required(ErrorMessage ="This field is required")]
+        [Required(ErrorMessage = "This field is required")]
+        [RegularExpression("[a-zA-Z-а-яА-Я']", ErrorMessage = "Invalid first name")]
         public string FirstName { get; set; }
 
         [Required(ErrorMessage = "This field is required")]
+        [RegularExpression("[a-zA-Z-а-яА-Я']", ErrorMessage = "Invalid last name")]
         public string LastName { get; set; }
 
         public string Patronymic { get; set; }
@@ -52,7 +54,7 @@ namespace SAS_Backend_Task_1.Models
         float _weight;
 
         [Required(ErrorMessage = "This field is required")]
-        [Range(20,500)]
+        [Range(20, 500)]
         public float Weight
         {
             get => _weight;
@@ -91,6 +93,7 @@ namespace SAS_Backend_Task_1.Models
 
 
         [Required(ErrorMessage = "This field is required")]
+        [RegularExpression("[a-zA-Z-а-яА-Я']", ErrorMessage = "Invalid country name")]
         public string Country { get; set; }
     }
 }
