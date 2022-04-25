@@ -32,6 +32,8 @@ namespace SAS_Backend_Task_1
             Configuration.Bind("ServiceASettings", aSettings);
             Configuration.Bind("ServiceBSettings", bSettings);
 
+      
+
             Func<IServiceProvider, ServiceA> serviceABuilder = (t) => new ServiceA(new ServiceB(bSettings), aSettings);
             Func<IServiceProvider, ServiceB> serviceBBuilder = (t) => new ServiceB(bSettings);
 
