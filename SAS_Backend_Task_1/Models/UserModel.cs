@@ -11,15 +11,14 @@ namespace SAS_Backend_Task_1.Models
     {
         public ulong ID;
 
-        [Range(2, 100)]
+        [StringLength(100)]
         [Required(ErrorMessage = "This field is required")]
-        //[RegularExpression("[a-zA-Zа-яА-Я]+[' -]*", ErrorMessage = "Invalid name")]
+        [RegularExpression(@"[a-zA-Zа-яА-Я]+[a-zA-Zа-яА-Я \-']*", ErrorMessage = "Invalid name")]
         public string FirstName { get; set; }
 
         [Required(ErrorMessage = "This field is required")]
-        //[RegularExpression("[a-zA-Zа-яА-Я]+[' -]*", ErrorMessage = "Invalid name")]
-
-        [Range(2,100)]
+        [StringLength(100)]
+        [RegularExpression(@"[a-zA-Zа-яА-Я]+[a-zA-Zа-яА-Я \-']*", ErrorMessage = "Invalid name")]
         public string LastName { get; set; }
 
         public string Patronymic { get; set; }
@@ -96,7 +95,8 @@ namespace SAS_Backend_Task_1.Models
 
 
         [Required(ErrorMessage = "This field is required")]
-        //[RegularExpression("[a-zA-Zа-яА-Я]+[' -]*", ErrorMessage = "Invalid country name")]
+        [RegularExpression(@"[a-zA-Zа-яА-Я]+[a-zA-Zа-яА-Я \-']*", ErrorMessage = "Invalid country name")]
+        [StringLength(100)]
         public string Country { get; set; }
     }
 }
