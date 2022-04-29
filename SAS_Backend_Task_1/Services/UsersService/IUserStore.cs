@@ -8,6 +8,7 @@ namespace SAS_Backend_Task_1.Models
 {
     public interface IUserStore
     {
+        ulong Size { get; }
         void Add(UserModel user);
 
         void Remove(ulong id);

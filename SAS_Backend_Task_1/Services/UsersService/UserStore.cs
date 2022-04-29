@@ -7,9 +7,9 @@ namespace SAS_Backend_Task_1
     public class UserStore : IUserStore
     {
         // HACK: I felt like uint range was way too small
-        public static Dictionary<ulong, UserModel> Users = new Dictionary<ulong, UserModel>();
+        private Dictionary<ulong, UserModel> _users = new Dictionary<ulong, UserModel>();
 
-        // private
+        public ulong Size => (ulong)_users.Count;
 
         uint id = 0;
 
@@ -17,23 +17,23 @@ namespace SAS_Backend_Task_1
         {
             user.ID = id++;
 
-            Users.Add(user.ID, user);
+            _users.Add(user.ID, user);
 
         }
 
         public void Edit(ulong id,UserModel user)
         {
-            Users[id] = user;
+            _users[id] = user;
         }
 
         public UserModel Get(ulong id)
         {
-            return Users[id];
+            return _users[id];
         }
 
         public void Remove(ulong id)
         {
-            Users.Remove(id);
+            _users.Remove(id);
         }
     }
 }
