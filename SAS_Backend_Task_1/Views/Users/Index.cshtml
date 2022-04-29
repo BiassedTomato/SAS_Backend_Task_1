@@ -13,6 +13,8 @@
             <tr>
                 <td>
                     <p>
+                        <a asp-action="Details" asp-controller="Users" asp-route-ID="@user.ID"></a>
+
                         <a href="/Users/Details?id=@user.ID" class="Button">@user.FirstName @user.LastName (@user.Email)</a>
                         <a href="/Users/Edit?id=@user.ID" style="color:#ffd757">Edit</a>
                         <a href="/Users/Delete?id=@user.ID" style="color:#e72d2d">Delete</a>

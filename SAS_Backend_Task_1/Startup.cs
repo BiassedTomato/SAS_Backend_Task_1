@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Options;
 using SAS_Backend_Task_1.Models;
 using System;
 using System.Collections.Generic;
@@ -26,20 +27,14 @@ namespace SAS_Backend_Task_1
         {
             services.AddControllersWithViews();
 
-            var aSettings = new ServiceASettings();
-            var bSettings = new ServiceBSettings();
+            services.Configure<ServiceASettings>(cfg => Configuration.Bind("ServiceASettings", cfg));
+            services.Configure<ServiceBSettings>(cfg => Configuration.Bind("ServiceBSettings", cfg));
 
-            Configuration.Bind("ServiceASettings", aSettings);
-            Configuration.Bind("ServiceBSettings", bSettings);
+            services.AddTransient<IServiceA, ServiceA>();
+            services.AddScoped<IServiceB1, ServiceB>();
+            services.AddSingleton<IServiceB2, ServiceB>();
 
-      
-
-            Func<IServiceProvider, ServiceA> serviceABuilder = (t) => new ServiceA(new ServiceB(bSettings), aSettings);
-            Func<IServiceProvider, ServiceB> serviceBBuilder = (t) => new ServiceB(bSettings);
-
-            services.AddTransient<IServiceA, ServiceA>(serviceABuilder);
-            services.AddScoped<IServiceB1, ServiceB>(serviceBBuilder);
-            services.AddSingleton<IServiceB2, ServiceB>(serviceBBuilder);
+            services.Configure<IServiceA>(Configuration);
 
             services.AddSingleton<IUserStore, UserStore>();
         }
@@ -89,6 +84,17 @@ namespace SAS_Backend_Task_1
          * Singleton B2 only increases its value on startup. (B1,B2+1 x1)
          * 
          * Therefore, on every page reload (new consequent request) A1 increases its value once and B1 & B2's twice. B2 offsets this on startup by one. Hence the 2*n+1.
+         * 
+         * ~~~~~
+         * 
+         * UPD: the explanation above is not applicable anymore. I used to inject IServiceB1 into ServiceA via factory method t=>new ServiceA(new ServiceB(), serviceASettings);
+         * 
+         * Now that I refactored the code with the IOptions pattern, ASP grabs the scoped ServiceB without creating it.
+         * 
+         * A - n loads
+         * B1, B2 - n+1 loads, because the Singleton service increases the counter by one at the very start.
+         * 
+         * I left the previous explanation for legacy preservation and entertainment purposes :D
          */
     }
 }

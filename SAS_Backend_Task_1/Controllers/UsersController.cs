@@ -38,7 +38,7 @@ namespace SAS_Backend_Task_1
                 return RedirectToAction("Index", "Home");
             }
 
-            return View("Register");
+            return View("Register", model);
 
         }
 
@@ -53,7 +53,7 @@ namespace SAS_Backend_Task_1
         public IActionResult Edit(string id)
         {
             var gid = ulong.Parse(id);
-            return View("Edit",_store.Get(gid));
+            return View("Edit", _store.Get(gid));
         }
 
         [HttpPost]
@@ -71,7 +71,7 @@ namespace SAS_Backend_Task_1
         public IActionResult Delete(string id)
         {
             var gid = ulong.Parse(id);
-            return View("Delete",_store.Get(gid));
+            return View("Delete", _store.Get(gid));
         }
 
         [HttpPost]

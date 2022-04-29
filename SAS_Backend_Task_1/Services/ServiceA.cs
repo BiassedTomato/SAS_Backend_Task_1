@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Extensions.Options;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -13,9 +14,9 @@ namespace SAS_Backend_Task_1
 
         public ServiceASettings Settings { get; private set; }
 
-        public ServiceA(IServiceB1 service,ServiceASettings settings)
+        public ServiceA(IServiceB1 service, IOptionsSnapshot<ServiceASettings> settings)
         {
-            Settings = settings;
+            Settings = settings.Value;
             _serviceB1 = service;
             constructionCount++;
         }

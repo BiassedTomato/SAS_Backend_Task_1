@@ -9,6 +9,8 @@ namespace SAS_Backend_Task_1
         // HACK: I felt like uint range was way too small
         public static Dictionary<ulong, UserModel> Users = new Dictionary<ulong, UserModel>();
 
+        // private
+
         uint id = 0;
 
         public void Add(UserModel user)

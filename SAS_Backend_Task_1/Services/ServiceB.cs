@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Extensions.Options;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -11,9 +12,9 @@ namespace SAS_Backend_Task_1
 
         public ServiceBSettings Settings { get; private set; }
 
-        public ServiceB(ServiceBSettings settings)
+        public ServiceB(IOptions<ServiceBSettings> settings)
         {
-            Settings = settings;
+            Settings = settings.Value;
             constructionCount++;
         }
 
